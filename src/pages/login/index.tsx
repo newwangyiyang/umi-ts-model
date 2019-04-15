@@ -127,6 +127,19 @@ class Login extends React.Component<LoginPropsIF, LoginStateIF> {
                     inline 
                     type="ghost"
                 >局部参数校验</Button>
+                <Button 
+                    onClick={() => {
+                        validateFields(['userphone'], {force: true}, (err: null | object) => {
+                            if(!err) {
+                                Toast.info('手机参数校验成功')
+                                router.push({pathname: '/ShowGlobalModel'})
+                            }
+                        })
+                    }} 
+                    size="small" 
+                    inline 
+                    type="ghost"
+                >获取全局model</Button>
                 </WingBlank>
             </div>
         )

@@ -47,3 +47,4 @@ export default connect(
         return {d: dvaDemo, g: global01, gg: global02}
     }
 )(dvaDemo)
+

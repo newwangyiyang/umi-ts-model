@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react'
 import { ListUrlRouterPropsIF } from '@/interfaces/propsIF';
 import { WingBlank, List, WhiteSpace, Toast } from 'antd-mobile';
 import { getAllHcData } from '@/api/list';
-import { ListItemIF } from '@/interfaces/responseIF';
+import { ListItemStateIF } from '@/interfaces/stateIF';
 import _ from 'lodash'
 
-let myList: ListItemIF[] = []
+let myList: ListItemStateIF[] = []
 
 
 const MyList: React.SFC<ListUrlRouterPropsIF> = props => {

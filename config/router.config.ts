@@ -32,6 +32,10 @@ export default [ // 配置路由
         path: '/listModel',
         component: './listModel/index'
     },
+    {   // 全局model数据交互
+        path: '/showGlobalModel',
+        component: './showGlobalModel/index'
+    },
     {
         path: '/funcComponent',
         component: './funcComponent/index'

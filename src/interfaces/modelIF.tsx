@@ -1,7 +1,29 @@
-import { ListItemIF } from './responseIF';
+import { ListItemStateIF } from './stateIF';
 
+
+/**
+ * listModel的model层数据类型
+ *
+ * @export
+ * @interface ListModelModelIF
+ */
 export interface ListModelModelIF {
-    listData: ListItemIF[]
+    listData: ListItemStateIF[]
+}
+/**
+ * 全局model层的数据类型
+ *
+ * @export
+ * @interface GlobalModelIF
+ */
+export interface GlobalModelIF {
+    name: string
+    userId: string
+    openId: string
+    headerUrl: string
+    age: number
+    createtime: Date
+    list: ListItemStateIF[]
 }
 
 /**
@@ -52,4 +74,7 @@ export interface ModelAllIF {
     global02: Global02IF
     dvaDemo: DvaDemoIF
     dvaDemo01: DavDemo01IF
+    listModel: ListModelModelIF
+    showGlobalModel: GlobalModelIF
 }
+

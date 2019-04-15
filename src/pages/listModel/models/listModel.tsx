@@ -1,9 +1,9 @@
-import { ListItemIF } from "@/interfaces/responseIF";
 import { ListModelModelIF } from '@/interfaces/modelIF';
 import { Action } from 'redux';
 import { EffectsPCEIF } from '@/interfaces/params';
 import { getAllHcData } from '@/api/list';
 import _ from 'lodash'
+import { ListItemStateIF } from '@/interfaces/stateIF';
 
 let state: ListModelModelIF = {
     listData: []
@@ -12,7 +12,7 @@ let state: ListModelModelIF = {
 export default {
     state,
     reducers: {
-        SET_LIST(state: ListModelModelIF, {payload: listData}: {payload: ListItemIF[]}) {
+        SET_LIST(state: ListModelModelIF, {payload: listData}: {payload: ListItemStateIF[]}) {
             return {...state, listData}
         }
     },

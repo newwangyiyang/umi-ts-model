@@ -21,6 +21,17 @@ export interface LoginStateIF {
     codeTime: number
 }
 
+/**
+ * 定义list列表state数据进行封装
+ *
+ * @export
+ * @interface ListItemStateIF
+ */
+export interface ListItemStateIF {
+    hdcName: string
+    hdcId: string
+    hdcSort: number
+}
 
 
 

@@ -1,6 +1,6 @@
 import { RcFormPropsIF } from './params';
 import { RouteComponentProps } from 'react-router';
-import { ListModelModelIF } from './modelIF';
+import { ListModelModelIF, GlobalModelIF } from './modelIF';
 /**
  * 重新定义 (重构) RouteComponentProps 中location属性的数据类型 
  * 泛型T表示location=>query中的属性结构及类型
@@ -60,7 +60,7 @@ export interface ListUrlLocationIF {
  * @interface ListUrlRouterPropsIF
  * @extends {RouteComponentProps<ListUrlMatchParamIF>}
  */
-export interface ListUrlRouterPropsIF extends RouteComponentProps<ListUrlMatchParamIF> {
+export interface ListUrlRouterPropsIF extends RouteComponentProps<ListUrlMatchParamIF> { // ListUrlMatchParamIF对parmas参数数据的封装
     location: UrlLocationQueryIF<ListUrlLocationIF>
 }
 /**
@@ -71,8 +71,13 @@ export interface ListUrlRouterPropsIF extends RouteComponentProps<ListUrlMatchPa
  * @extends {RouteComponentProps}
  */
 export interface ListModelPropsIF extends RouteComponentProps {
-    dispatch: Function,
+    dispatch: Function
     listModel: ListModelModelIF
+}
+
+export interface ShowGlobalModelPropsIF extends RouteComponentProps {
+    dispatch: Function
+    global: GlobalModelIF
 }
 
 /**
