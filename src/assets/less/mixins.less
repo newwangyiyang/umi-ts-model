@@ -1,0 +1,510 @@
+/**
+* 作品：mixin.less
+*/
+
+/*-------------------------------------
+├   布局                              ┆
+└------------------------------------*/
+
+// 盒子宽高
+.size(@w, @h) { width: @w; height: @h; }
+
+// 文字图片居中
+.center(text-x) { text-align: center; }
+.center(text-y) { display: table-cell; vertical-align: middle; }
+
+// 块级元素水平居中
+.center(auto-x) { display: block; margin-left: auto; margin-right: auto; }
+
+// 居中, 不确定尺寸, 不兼容 IE6
+.center(unknown) { position: absolute; top: 0; left: 0; right: 0; bottom: 0; margin: auto; }
+.center(unknown-x) { position: absolute; left: 0; right: 0; margin-left: auto; margin-right: auto; }
+.center(unknown-y) { position: absolute; top: 0; bottom: 0; margin-top: auto; margin-bottom: auto; }
+
+// 居中, CSS3 平移方式, 兼容性不行
+.center(translate) { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+
+// 居中, Flex 方式, 兼容性不行
+.center(flex) { display: flex; align-items: center; justify-content: center; }
+
+//flex水平居中
+.flex-hc() {
+    display: flex;
+    justify-content: center;
+}
+//flex垂直居中
+.flex-vc() {
+    display: flex;
+    align-items: center;
+}
+//flex水平垂直居中
+.flex-c() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+//flex换轴水平垂直居中
+.flex-v-c() {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+// 遮罩层, 全屏遮罩、区域遮罩
+.over-screen(fixed) { position: fixed; top: 0; left: 0; right: 0; bottom: 0; }
+.over-screen(absolute) { position: absolute; top: 0; left: 0; right: 0; bottom: 0; }
+
+// 扩展点击区域
+.extend-click() {
+  position: relative;
+  &:before { content: ''; position: absolute; top: -10px; left: -10px; right: -10px; bottom: -10px; }
+}
+
+// 定宽居中页面布局
+.layout-page(@width: 1200px) { width: @width; margin-left: auto; margin-right: auto; }
+
+// 侧边栏
+// 主要区域：overflow: hidden; margin-left: xx; margin-right: xx;
+.sidebar(left, @width) { position: absolute; top: 0; left: 0; width: @width; }
+.sidebar(right, @width) { position: absolute; top: 0; right: 0; width: @width; }
+
+/*-------------------------------------
+├   字体                              ┆
+└------------------------------------*/
+
+//自定义字体
+.font-customer(@fontname: 'maobi', @url) {
+  @font-face {
+    font-family: @fontname;
+    src: url(@url);
+  }
+}
+//使用自定义字体
+.user-cfont() { font-family: 'maobi'; }
+// 字体大小
+.fz(@fz) { font-size: @fz; }
+
+// 字体大小与行高
+.fz(@fz, @lh) { font-size: @fz; line-height: @lh; }
+
+// 字体大小、行高、高度
+.fz(@fz, @h, @lh: @h) { font-size: @fz; height: @h; line-height: @lh; }
+
+// 行高与高度
+.lh(@h, @lh: @h) { height: @h; line-height: @lh; }
+
+// 字体颜色, 包括链接与非链接
+.color(@color) { color: @color;}
+
+// 正常字体样式
+.normal-font() { font-weight: normal; font-style: normal; }
+
+// 辅助性文字（灰色）
+.assist-font(@color: #b0b0b0, @fz: 14px) { color: @color; font-size: @fz; }
+
+// 禁止换行, 文本溢出省略号显示 (一行)
+.ellipsis() {
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+
+// 文本溢出省略号显示 (多行)
+// 只支持 webkit 浏览器, 解决方案：高度 = 行高*行数
+// height: 90px; line-height: 30px; -webkit-line-clamp: 3;
+.ellipsis-mult(@n: 3) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: @n;
+  overflow: hidden;
+}
+
+// 书写模式：牌匾从右至左水平单行排版效果、文笺从右至左、从上至下排版效果
+.retext(x) { direction: rtl; unicode-bidi: bidi-override; }
+.retext(y) { writing-mode: tb-rl; writing-mode: vertical-rl; }
+
+// 文字透明
+.transparent-text() { font: 0/0 serif; text-shadow: none; color: transparent; }
+
+// 文字隐藏（常用于SEO优化）
+// <a href="" title="Logo SEO 优化 "><h1 class="logo">xx</h1></a>
+.hidden-text() { text-indent : -9999px; overflow: hidden; text-align: left; }
+
+// 文字外发光效果
+.glow-text(@r: 10px, @color: gold) { text-shadow: 0 0 @r @color; }
+
+/*-------------------------------------
+├   图像                              ┆
+└------------------------------------*/
+
+// 用 max-width 来防止图片撑破容器
+.max-img() { display: block; max-width: 100%; height: auto; }
+
+// 全屏大图背景
+.fullscreen-bg(@url) {
+  width: 100vw;
+  height: 100vh;
+  background: url(@url) no-repeat 50% 50%;
+  background-size: cover;
+}
+
+// 滤镜: 将彩色照片显示为黑白照片
+.grayscale() {
+  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  -ms-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
+}
+
+/*-------------------------------------
+├   动效                              ┆
+└------------------------------------*/
+
+// 链接默认无下划线，hover后有下划线的样式
+.hover-link() {
+  text-decoration: none;
+  &:hover { text-decoration: underline; }
+}
+
+// 将链接变成默认的文字样式
+.unstyled-link() {
+  color: inherit;
+  cursor: inherit;
+  text-decoration: inherit;
+  &:active, &:focus { outline: none; }
+}
+
+// 盒子阴影
+// box-shadow: 水平阴影的位置, 垂直阴影的位置, 模糊距离, 阴影的大小, 阴影的颜色, 阴影开始方向（默认是从里往外，设置inset就是从外往里）;
+// box-shadow: h-shadow v-shadow blur spread color inset;
+.box-shadow() {
+  box-shadow: 0px 14px 26px 0px rgba(0, 0, 0, 0.1);
+}
+
+// 盒子 Hover
+.box-hover() {
+  // box-shadow: 0px 1px 2px 0px rgba(84, 107, 107, .4);
+  transition: all .2s linear;
+  &:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, .1);
+    transform: translate3d(0, -2px, 0);
+  }
+}
+
+.box-hover2() {
+  transition: transform .5s ease;
+  &:hover {
+    transform: translateX(10px);
+  }
+}
+
+// 三维闪动 bug 处理
+.transform-fix() { -webkit-backface-visibility: hidden; -webkit-transform-style: preserve-3d; }
+
+// Animation
+.ani(@name, @time: 1s, @ease: ease-in-out, @fillmode: forwards) {
+  animation-name: @name;
+  animation-duration: @time;
+  animation-timing-function: @ease;
+  animation-fill-mode: @fillmode;
+}
+
+/*-------------------------------------
+├   功能                              ┆
+└------------------------------------*/
+
+// 浮动
+.fl() { float: left; }
+.fr() { float: right; }
+
+// 清除浮动
+.clearfix() {
+  *zoom: 1;
+  &:after { display: block; clear: both; content: ''; visibility: hidden; height: 0; }
+}
+.clearfix(table) {
+  *zoom: 1;
+  &:before, &:after { content: " "; display: table; clear: both; }
+}
+
+// 禁止文本被选择
+.user-select() { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+
+// 隐藏鼠标手势
+.hide-cursor() { cursor: none !important; }
+
+
+// 禁用元素事件
+// 1. 阻止任何点击动作的执行
+// 2. 使链接显示为默认光标(cursor:default)
+// 3. 阻止触发hover和active状态
+// 4. 阻止JavaScript点击事件的触发
+.pointer-events() { pointer-events: none; }
+
+// 模糊
+.blur(@blur: 10px) {
+  filter: blur(@blur);
+  -webkit-filter: blur(@blur);
+  -moz-filter: blur(@blur);
+  -o-filter: blur(@blur);
+  -ms-filter: blur(@blur);
+  filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius='@{blur}');
+  *zoom: 1;
+}
+
+// 用伪类来显示打印时 a 标签的链接 （注意：该mixin只在页面打印时有效）
+.print-link() {
+  @media print {
+    a[href]:after { content: " (" attr(href) ") "; }
+  }
+}
+
+// 隔行换色
+.zebra-lists(odd, @color) {
+  &.odd {
+    >li:nth-child(odd) { background-color: @color; }
+  }
+}
+.zebra-lists(even, @color) {
+  &.even {
+    >li:nth-child(even) { background: green; }
+  }
+}
+
+// 首字下沉
+.first-letter(@font-size: 6em) {
+  &::first-letter{
+    float: left;
+    line-height: 1;
+    font-size: @font-size;
+  }
+}
+
+// 特殊标记段落第一行
+.first-line() {
+  &::first-line{
+    color: red
+  }
+}
+
+// 美化选中文本
+.beauty-select() {
+  &::selection{
+   color: #fff;
+   background-color: #6bc30d;
+   text-shadow: none;
+  }
+}
+
+// 美化占位符 placeholder 样式
+.beauty-placeholder(@fz, @color: #999, @align: left) {
+  &:-moz-placeholder { font-size: @fz; color: @color; text-align: @align; }
+  &:-ms-input-placeholder { font-size: @fz; color: @color; text-align: @align; }
+  &::-webkit-input-placeholder { font-size: @fz; color: @color; text-align: @align; }
+}
+
+// 美化占位符 placeholder 样式（自定义属性和值）
+.beauty-placeholder(custom, @property, @value) {
+  &:-moz-placeholder { @{property}: @value; }
+  &:-ms-input-placeholder { @{property}: @value; }
+  &::-webkit-input-placeholder { @{property}: @value; }
+}
+
+/*-------------------------------------
+├   图形                              ┆
+└------------------------------------*/
+
+// 三角形
+.triangle(@width: 4px,@color: #000) {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  vertical-align: middle;
+  border-top: @width solid @color;
+  border-left: @width solid transparent;
+  border-right: @width solid transparent;
+}
+
+// 三角形箭头气泡效果, IE6-7 无表现
+.arrow(top, @w: 10px, @color, @x: 50%) {
+  position: relative;
+  &:before { position: absolute; bottom: 100%; left: @x; content: " "; height: 0; width: 0; pointer-events: none; border-style: solid; border-color: transparent; border-bottom-color: @color; border-width: unit(@w, px); @margin: -@w; margin-left: unit(@margin, px); }
+}
+.arrow(right, @w: 10px, @color, @y: 50%) {
+  position: relative;
+  &:before { position: absolute; left: 100%; top: @y; content: " "; height: 0; width: 0; pointer-events: none; border-style: solid; border-color: transparent; border-left-color: @color; border-width: unit(@w, px); @margin: -@w; margin-top: unit(@margin, px); }
+}
+.arrow(bottom, @w: 10px, @color, @x: 50%) {
+  position: relative;
+  &:before { position: absolute; top: 100%; left: @x; content: " "; height: 0; width: 0; pointer-events: none; border-style: solid; border-color: transparent; border-top-color: @color; border-width: unit(@w, px); @margin: -@w; margin-left: unit(@margin, px); }
+}
+.arrow(left, @w: 10px, @color, @y: 50%) {
+  position: relative;
+  &:before { position: absolute; right: 100%; top: @y; content: " "; height: 0; width: 0; pointer-events: none; border-style: solid; border-color: transparent; border-right-color: @color; border-width: unit(@w, px); @margin: -@w; margin-top: unit(@margin, px); }
+}
+
+// 三角形箭头气泡效果, 带边框
+.arrow-with-border(top, @w: 10px, @color, @border-w: 1px, @border-color, @x: 50%) {
+  position: relative;
+  &:before, &:after { bottom: 100%; left: @x; content: " "; height: 0; width: 0; position: absolute; pointer-events: none; border-style: solid; border-color: transparent; }
+  &:after { border-bottom-color: @color; border-width: unit(@w, px); @margin: -@w; margin-left: unit(@margin, px); }
+  &:before { border-bottom-color: @border-color; @arrbo: @w+@border-w; border-width: unit(@arrbo, px); @margin-bo: -@arrbo; margin-left: unit(@margin-bo, px); }
+}
+.arrow-with-border(bottom, @w: 10px, @color, @border-w: 1px, @border-color, @x: 50%) {
+  position: relative;
+  &:before, &:after { top: 100%; left: @x; content: " "; height: 0; width: 0; position: absolute; pointer-events: none; border-style: solid; border-color: transparent; }
+  &:after { border-top-color: @color; border-width: unit(@w, px); @margin: -@w; margin-left: unit(@margin, px); }
+  &:before { border-top-color: @border-color; @arrbo: @w+@border-w; border-width: unit(@arrbo, px); @margin-bo: -@arrbo; margin-left: unit(@margin-bo, px); }
+}
+.arrow-with-border(left, @w: 10px, @color, @border-w: 1px, @border-color, @y: 50%) {
+  position: relative;
+  &:before, &:after { top: @y; right: 100%; content: " "; height: 0; width: 0; position: absolute; pointer-events: none; border-style: solid; border-color: transparent; }
+  &:after { border-right-color: @color; border-width: unit(@w, px); @margin: -@w; margin-top: unit(@margin, px); }
+  &:before { border-right-color: @border-color; @arrbo: @w+@border-w; border-width: unit(@arrbo, px); @margin-bo: -@arrbo; margin-top: unit(@margin-bo, px); }
+}
+.arrow-with-border(right, @w: 10px, @color, @border-w: 1px, @border-color, @y: 50%) {
+  position: relative;
+  &:before, &:after { top: @y; left: 100%; content: " "; height: 0; width: 0; position: absolute; pointer-events: none; border-style: solid; border-color: transparent; }
+  &:after { border-left-color: @color; border-width: unit(@w, px); @margin: -@w; margin-top: unit(@margin, px); }
+  &:before { border-left-color: @border-color; @arrbo: @w+@border-w; border-width: unit(@arrbo, px); @margin-bo: -@arrbo; margin-top: unit(@margin-bo, px); }
+}
+
+/*-------------------------------------
+├   组件                              ┆
+└------------------------------------*/
+
+// 吸顶导航
+.fix-header(@h: 70px) {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: @h;
+  z-index: 1000;
+  // background-color: rgba(256, 256, 256, .92);
+  // border-bottom: 1px solid rgba(7, 17, 27, 0.1);
+  // box-shadow: 0px 0px 20px rgba(0,0,0,0.2);
+}
+
+// 吸底导航
+.fix-header(@h: 70px) {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: @h;
+  z-index: 1000;
+}
+
+// 输入框
+.input-text() {
+  display: block;
+  width: 100%;
+  padding: 4px 8px;
+  font-size: 14px;
+  line-height: 1.42858;
+  color: #333;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  border-radius: 3px;
+}
+
+// 分割线
+// <span class="separator">|/-</span>
+.separator() {
+  margin: 0 10px;
+  color: #999;
+  font-size: 14px;
+}
+
+// 分割线 / (面包屑导航)
+.separator2() {
+  &:before {
+    padding: 0 5px;
+    color: #ccc;
+    content: "/\00a0";
+  }
+}
+
+// <hr class="hr">
+// 支付宝：我也是有底线的
+.hr() {
+  height: 1px;
+  margin: 10px 0;
+  border: 0;
+  clear: both;
+  background-color: #e2e2e2;
+}
+
+// 徽章 (椭圆、小圆点)
+// <span class="badge">10</span>
+.badge(...) {
+  position: relative;
+  display: inline-block;
+  font-size: 12px;
+  color: #fff;
+  background-color: #FF5722;
+}
+.badge(ellipse) {
+  min-width: 8px;
+  height: 18px;
+  padding: 2px 6px;
+  text-align: center;
+  line-height: 18px;
+  border-radius: 9px;
+}
+.badge(dot) {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+// 1 像素边框问题
+.onepx(...) {
+  position: relative;
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    border-top: 1px solid rgba(7, 17, 27, 0.1);
+    transform: scaleY(0.5);
+  }
+}
+.onepx(top) { &:after { top: 0; } }
+.onepx(bottom) { &:after { bottom: 0; } }
+.onepx-easy(top, @color: #ccc) { box-shadow: inset 0px -1px 1px -1px @color; }
+.onepx-easy(bottom, @color: #ccc) { box-shadow: inset 0px 1px 1px -1px @color; }
+
+//省略号动画
+.loading:after {
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: bottom;
+    animation: ellipsis 2s infinite;
+    content: "\2026"; /* ascii code for the ellipsis character */
+}
+@keyframes ellipsis {
+    from {
+        width: 2px;
+    }
+    to {
+        width: 15px;
+    }
+}
+
+// 图片翻转
+img.flip {
+    transform: scaleX(-1);
+    filter: FlipH;
+}
+/* 图片的预加载 */
+.cache_img() { //注意: 该元素必须嵌套在html中
+    /* background: url(image1.jpg) no-repeat, url(image2.jpg) no-repeat, url(image3.jpg) no-repeat; */
+    width: 0px;
+    height: 0px;
+    display: inline;
+}

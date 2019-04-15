@@ -1,0 +1,71 @@
+/**
+* 作品：mixin.less
+*/
+/*-------------------------------------
+├   布局                              ┆
+└------------------------------------*/
+/*-------------------------------------
+├   字体                              ┆
+└------------------------------------*/
+/*-------------------------------------
+├   图像                              ┆
+└------------------------------------*/
+/*-------------------------------------
+├   动效                              ┆
+└------------------------------------*/
+/*-------------------------------------
+├   功能                              ┆
+└------------------------------------*/
+/*-------------------------------------
+├   图形                              ┆
+└------------------------------------*/
+/*-------------------------------------
+├   组件                              ┆
+└------------------------------------*/
+.loading:after {
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: bottom;
+  animation: ellipsis 2s infinite;
+  content: "\2026";
+  /* ascii code for the ellipsis character */
+}
+@keyframes ellipsis {
+  from {
+    width: 2px;
+  }
+  to {
+    width: 15px;
+  }
+}
+img.flip {
+  transform: scaleX(-1);
+  filter: FlipH;
+}
+/* 图片的预加载 */
+.normal {
+  font-family: Georgia, sans-serif;
+  margin-top: 4em;
+  text-align: center;
+}
+.normal .name {
+  color: red;
+}
+.my_index {
+  text-shadow: 0 0 10px gold;
+  font-size: 20px;
+}
+.welcome {
+  height: 328px;
+  background: url(../../assets/yay.jpg) no-repeat center 0;
+  background-size: 388px 328px;
+}
+.list {
+  font-size: 1.2em;
+  margin-top: 1.8em;
+  list-style: none;
+  line-height: 1.5em;
+}
+.list code {
+  background: #f7f7f7;
+}
