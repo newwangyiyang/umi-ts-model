@@ -140,6 +140,14 @@ class Login extends React.Component<LoginPropsIF, LoginStateIF> {
                     inline 
                     type="ghost"
                 >获取全局model</Button>
+                <Button 
+                    onClick={() => {
+                        router.push({pathname: '/nesting/life'})
+                    }} 
+                    size="small" 
+                    inline 
+                    type="ghost"
+                >路由嵌套展示</Button>
                 </WingBlank>
             </div>
         )

@@ -74,11 +74,27 @@ export interface ListModelPropsIF extends RouteComponentProps {
     dispatch: Function
     listModel: ListModelModelIF
 }
-
+/**
+ * ShowGlobalModelProps
+ *
+ * @export
+ * @interface ShowGlobalModelPropsIF
+ * @extends {RouteComponentProps}
+ */
 export interface ShowGlobalModelPropsIF extends RouteComponentProps {
     dispatch: Function
     global: GlobalModelIF
 }
+/**
+ * 
+ *
+ * @export
+ * @interface TabbarItemPropsIF
+ */
+export interface TabbarItemPropsIF {
+    iconUrl: string
+}
+
 
 /**
  * 纯函数式组件

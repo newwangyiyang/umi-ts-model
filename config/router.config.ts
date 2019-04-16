@@ -20,6 +20,8 @@ export default [ // 配置路由
         path: '/dvaDemo01',
         component: './dvaDemo01/index'
     },
+
+    /*******************************框架页面封装 S**************************************** */
     {   // 登录页面 （类组件）
         path: '/login',
         component: './login/index'
@@ -36,6 +38,15 @@ export default [ // 配置路由
         path: '/showGlobalModel',
         component: './showGlobalModel/index'
     },
+    {   // 路由的嵌套 关键点 props.children
+        path: '/nesting',
+        component: './nesting/index',
+        routes: [
+            { path: '/nesting/life', component: './nesting/nestingPages/life/index' },
+            { path: '/nesting/koubei', component: './nesting/nestingPages/koubei/index' },
+        ]
+    },
+    /*******************************框架页面封装 E**************************************** */
     {
         path: '/funcComponent',
         component: './funcComponent/index'

@@ -1,6 +1,7 @@
 declare module 'classnames'
 declare module 'qs'
 declare module 'rc-form'
+declare module 'react-sticky'
 // 将axios的返回值定义到全局ajax下
 declare namespace Ajax {
     // axios 返回数据
