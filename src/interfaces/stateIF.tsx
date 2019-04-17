@@ -33,5 +33,18 @@ export interface ListItemStateIF {
     hdcSort: number
 }
 
+/**
+ * 封装Home页面的State
+ *
+ * @export
+ * @interface PageForDataStateIF
+ */
+export interface HomeStateIF {
+    province: string
+    city: string
+    district: string
+    idx: number
+    pageSize: number
+}
 
 

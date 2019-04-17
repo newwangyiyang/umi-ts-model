@@ -44,6 +44,7 @@ export default [ // 配置路由
         routes: [
             { path: '/nesting/life', component: './nesting/nestingPages/life/index' },
             { path: '/nesting/koubei', component: './nesting/nestingPages/koubei/index' },
+            { path: '/nesting/friend', component: './nesting/nestingPages/friend/index' },
         ]
     },
     /*******************************框架页面封装 E**************************************** */

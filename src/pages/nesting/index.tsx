@@ -25,7 +25,7 @@ const tabData = [
     title: 'Friend',
     icon: 'https://zos.alipayobjects.com/rmsportal/psUFoAMjkCcjqtUCNPxB.svg',
     selectedIcon: 'https://zos.alipayobjects.com/rmsportal/IIRLrXXrFAhXVdhMWgUI.svg',
-    toPath: ''
+    toPath: '/nesting/friend'
   },
   {
     id: '564ff94242fc488b861e16d061bf1972',
@@ -45,6 +45,7 @@ const Nesting: React.SFC = props => {
           tintColor="#33A3F4"
           barTintColor="white"
           tabBarPosition="bottom"
+          prerenderingSiblingsNumber={0}
         >
           {tabData.map((v, i) => {
             return <TabBar.Item

@@ -1,12 +1,22 @@
-/* eslint no-dupe-keys: 0 */
-import React, { useState, useEffect, ReactText } from 'react';
+import React, {useEffect, useState, ReactText} from 'react'
 import { ListView } from 'antd-mobile';
-import { getCusInfoList } from '@/api/home';
+import * as ReactDOM from 'react-dom';
+import { getCusInfoList } from '@/api/home'
 
+
+const MyBody: React.SFC = props => {
+    return (
+        <div className="am-list-body my-body">
+            <span style={{ display: 'none' }}>you can custom body wrap element</span>
+            {props.children}
+        </div>
+    );
+}
 
 let PAGE_NUM = 0
+let lv: any
 // 对外抛出纯函数组件
-const Home: React.SFC = props => {
+const Friend: React.SFC = props => {
   const dataSource = new ListView.DataSource({
     rowHasChanged: (row1: any, row2: any) => row1 !== row2,
   });
@@ -14,7 +24,9 @@ const Home: React.SFC = props => {
   const [homeData, setHomeData] = useState({
     dataSource,
     isLoading: true,
-    hasMore: true
+    hasMore: true,
+    height: 0,
+    lv
   })
   // 初始化list数据
   const [list, setList] = useState([])
@@ -28,24 +40,28 @@ const Home: React.SFC = props => {
   })
   // 生命周期钩子，初始化列表数据
   useEffect(() => {
+    // 强制转换成 HTMLDivElement 类 即断言
+    const height = document.documentElement.clientHeight - ((ReactDOM.findDOMNode(homeData.lv) as HTMLDivElement).parentNode as HTMLDivElement).offsetTop;
     (async () => {
+    // 在tabbar中使用分页加载数据   切记需要设置tabbar的prerenderingSiblingsNumber: 0 属性只加载当前页面的数据
       const { data }: {data: Ajax.AjaxResponse} = await getCusInfoList(pageSearch)
-
       // 拉取第一页的数据
       if(data.statusCode === 1001 && data.data.length > 0) { // 证明数据存在
         setList(data.data)
         setHomeData({
+            ...homeData,
             dataSource: dataSource.cloneWithRows(data.data),
             isLoading: false,
-            hasMore: true
+            hasMore: true,
+            height: height
         })
       }
     })()
-    console.log(321)
   }, [])
   return (
     <div>
       <ListView
+        ref={el => homeData.lv = el}
         dataSource={homeData.dataSource}
         renderHeader={() => <span>header</span>}
         renderFooter={() => (<div style={{ padding: 30, textAlign: 'center' }}>
@@ -54,12 +70,16 @@ const Home: React.SFC = props => {
         </div>)}
         renderRow={row}
         renderSeparator={separator}
-        className="am-list"
+        renderBodyComponent={() => <MyBody />}
+        style={{
+            height: homeData.height,
+            overflow: 'auto',
+        }}
         pageSize={10}
-        useBodyScroll
         onEndReached={
           // 加载更多数据
           async (event) => {
+            console.log(homeData.height, homeData.lv)
             // load new data
             // hasMore: from backend data, indicates whether it is the last page, here is false
             if (homeData.isLoading || !homeData.hasMore) { // 数据正在加载或者以加载完毕都直接返回 注意点
@@ -78,6 +98,7 @@ const Home: React.SFC = props => {
               // 此处注意: useState的数据不会立即更新， 这里获取的list还是之前的list数据
 
               setHomeData({
+                  ...homeData,
                   dataSource: dataSource.cloneWithRows(l),
                   isLoading: false,
                   hasMore: true
@@ -128,4 +149,4 @@ const row = (rowData: any, sectionID: string | number, rowID: string | number) =
   );
 };
 
-export default Home
+export default Friend
