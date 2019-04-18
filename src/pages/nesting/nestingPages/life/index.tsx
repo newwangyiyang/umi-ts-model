@@ -91,64 +91,9 @@ const Tab001: React.SFC = props => {
                 console.log(files, type, index)
                 setFiles(files as FileInputAntdParamsIF[])
             }}
+            multiple
             selectable={files.length < 10}
             onImageClick={(index, fs) => console.log(index, fs)}
-            accept="image/gif,image/jpeg,image/jpg,image/png"
-            />
-            <p className={styles.tab001_p}>选择需要上传的图片</p>
-            <ImagePicker
-            files={files}
-            onChange={(files, type, index) => {
-                console.log(files, type, index)
-                setFiles(files as FileInputAntdParamsIF[])
-            }}
-            selectable={files.length < 10}
-            onImageClick={(index, fs) => console.log(index, fs)}
-            accept="image/gif,image/jpeg,image/jpg,image/png"
-            />
-            <p className={styles.tab001_p}>选择需要上传的图片</p>
-            <ImagePicker
-            files={files}
-            onChange={(files, type, index) => {
-                console.log(files, type, index)
-                setFiles(files as FileInputAntdParamsIF[])
-            }}
-            selectable={files.length < 10}
-            onImageClick={(index, fs) => console.log(index, fs)}
-            accept="image/gif,image/jpeg,image/jpg,image/png"
-            />
-            <p className={styles.tab001_p}>选择需要上传的图片</p>
-            <ImagePicker
-            files={files}
-            onChange={(files, type, index) => {
-                console.log(files, type, index)
-                setFiles(files as FileInputAntdParamsIF[])
-            }}
-            selectable={files.length < 10}
-            onImageClick={(index, fs) => console.log(index, fs)}
-            accept="image/gif,image/jpeg,image/jpg,image/png"
-            />
-            <p className={styles.tab001_p}>选择需要上传的图片</p>
-            <ImagePicker
-            files={files}
-            onChange={(files, type, index) => {
-                console.log(files, type, index)
-                setFiles(files as FileInputAntdParamsIF[])
-            }}
-            selectable={files.length < 10}
-            onImageClick={(index, fs) => console.log(index, fs)}
-            accept="image/gif,image/jpeg,image/jpg,image/png"
-            />
-            <p className={styles.tab001_p}>选择需要上传的图片</p>
-            <ImagePicker
-            files={files}
-            onChange={(files, type, index) => {
-                console.log(files, type, index)
-                setFiles(files as FileInputAntdParamsIF[])
-            }}
-            selectable={files.length < 10}
-            onImageClick={(index, fs) => console.log(index, fs)}
-            accept="image/gif,image/jpeg,image/jpg,image/png"
             />
         </div>
     )

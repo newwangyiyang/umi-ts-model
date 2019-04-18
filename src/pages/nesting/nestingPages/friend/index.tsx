@@ -1,5 +1,5 @@
 import React, {useEffect, useState, ReactText} from 'react'
-import { ListView } from 'antd-mobile';
+import { ListView, PullToRefresh } from 'antd-mobile';
 import * as ReactDOM from 'react-dom';
 import { getCusInfoList } from '@/api/home'
 
@@ -26,6 +26,7 @@ const Friend: React.SFC = props => {
     isLoading: true,
     hasMore: true,
     height: 0,
+    refreshing: true,
     lv
   })
   // 初始化list数据
@@ -53,7 +54,8 @@ const Friend: React.SFC = props => {
             dataSource: dataSource.cloneWithRows(data.data),
             isLoading: false,
             hasMore: true,
-            height: height
+            height: height,
+            refreshing: false
         })
       }
     })()
@@ -107,6 +109,28 @@ const Friend: React.SFC = props => {
               setHomeData({...homeData, isLoading: false, hasMore: false})
             }
         }}
+        pullToRefresh={
+          <PullToRefresh
+            distanceToRefresh={80}
+            // activate激活状态， finish: 刷新完成状态
+            indicator={{ activate: '下拉可以刷新', finish: '已完成刷新...' }}
+            getScrollContainer={homeData.lv}
+            damping={180}
+            direction="down"
+            refreshing={homeData.refreshing}
+            onRefresh={
+              () => {
+                setHomeData({ ...homeData, refreshing: true, isLoading: true });
+                // simulate initial Ajax
+                setTimeout(() => {
+                  setHomeData({...homeData, refreshing: false,isLoading: false,})   
+                }, 600);
+              }
+            }
+          />
+        }
+
+
         onEndReachedThreshold={10}
       />
     </div>
