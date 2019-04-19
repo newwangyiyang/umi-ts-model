@@ -8,10 +8,13 @@ const config: IConfig =  {
   history: 'hash', // 已hash作为路由跳转的方式
   outputPath: '/NginxPath', // 打包的输出路径
   base: '/NginxPath/', //指定 react-router 的 base，部署到非根目录时需要配置
-  publicPath: './', // 指定 webpack 的 publicPath，指向静态资源文件所在的路径
+  publicPath: '/NginxPath/', // 指定 webpack 的 publicPath，指向静态资源文件所在的路径
   hash: true, // 是否开启 hash 文件后缀
   targets: { // 配置浏览器最低版本，会自动引入 polyfill 和做语法转换，配置的 targets 会和合并到默认值，所以不需要重复配置
-    ie: 11,
+    android: 5,
+    ios: 7,
+    chrome: 58,
+    ie: 9,
   },
   
   routes,
@@ -20,8 +23,8 @@ const config: IConfig =  {
   lessLoaderOptions: {
     javascriptEnabled: true
   },
-  // 配置别名
   alias:{
+    // 配置别名
     '@': path.resolve(__dirname, 'src/'),
     components: path.resolve(__dirname,'src/components'),
     utils: path.resolve(__dirname,'src/utils'),
@@ -39,6 +42,7 @@ const config: IConfig =  {
       dva: {
         immer: true
       },
+      fastClick: true,
       dynamicImport: { webpackChunkName: true },
       title: '步长制药',
       dll: false,

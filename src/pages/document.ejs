@@ -10,15 +10,14 @@
     <meta content="telephone=no,email=no" name=format-detection/>
     <meta name="viewport"
           content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-    <title></title>
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title><%= context.title %></title>
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
 </head>
 
 <body>
     <noscript>浏览器不兼容，请更换浏览器</noscript>
     <div id="root"></div>
     <!-- built files will be auto injected -->
-    <script src="//as.alipayobjects.com/g/component/fastclick/1.0.6/fastclick.js"></script>
     <script src="//cdn.bootcss.com/viewport-units-buggyfill/0.6.2/viewport-units-buggyfill.min.js"></script>
     <script src="//cdn.bootcss.com/viewport-units-buggyfill/0.6.2/viewport-units-buggyfill.hacks.min.js"></script>
     <script>
@@ -26,11 +25,6 @@
         window.viewportUnitsBuggyfill.init({
           hacks: window.viewportUnitsBuggyfillHacks
         });
-        if ('addEventListener' in document) {
-          document.addEventListener('DOMContentLoaded', function () {
-            FastClick.attach(document.body);
-          }, false);
-        }
         if (!window.Promise) {
           document.writeln(
             '<script src="//as.alipayobjects.com/g/component/es6-promise/3.2.2/es6-promise.min.js"' + '>' + '<' +
