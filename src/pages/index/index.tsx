@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 const styles = require('./index.less')
 
+import s from 'store2'
+
 import _ from 'lodash'
 
 const showLodash = () => {
@@ -10,7 +12,8 @@ const showLodash = () => {
 
 export default function() {
   useEffect(() => {
-    
+    s('name', '王一扬')
+    console.log(s('name'))
   })
   return (
     <div className={styles.normal}>

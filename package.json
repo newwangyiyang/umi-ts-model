@@ -18,7 +18,8 @@
     "rc-form": "^2.4.4",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
-    "react-sticky": "^6.0.3"
+    "react-sticky": "^6.0.3",
+    "store2": "^2.7.1"
   },
   "devDependencies": {
     "@types/jest": "^23.3.12",

@@ -1,6 +1,9 @@
 export default [ // 配置路由
     { path: '/', component: './index/index' },
-    // 权限配置 Routes
+    // 权限配置 Routes  将权限存储在了localStorage
+    // 由于app中的webView不支持window.localStorage (getItem/setItem) 所以使用store2对本地存储做了兼容处理
+    // WebView白屏就是因为获取不到localStorage对象，报异常
+    // 另外需注意 await launch(url, forceWebView: true, enableJavaScript: true) 设置enableJavaScript: true， 启用js
     { path: '/home', authority: ['user', 'admin'], component: './home/index', Routes: ['src/pages/Authorized'] },
     // 路由嵌套测试
     { 
