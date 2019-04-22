@@ -57,15 +57,15 @@ export default [ // 配置路由
                 component: './login/index' 
             }, 
             {   // 列表页面 （纯函数组件） 基于userState
-                path: '/list/:id',
+                path: '/common/list/:id',
                 component: './list/index'
             },
             {   // 列表页面 （纯函数组件） 基于model
-                path: '/listModel',
+                path: '/common/listModel',
                 component: './listModel/index'
             },
             {   // 全局model数据交互
-                path: '/showGlobalModel',
+                path: '/common/showGlobalModel',
                 component: './showGlobalModel/index'
             },
         ]
@@ -91,7 +91,7 @@ export default [ // 配置路由
         Routes: ['src/pages/Authorized'],
         authority: ['user', 'admin'],
         routes: [
-            {path: '/TDFIndex', component: './TDFIndex/index', title: '银川互联网医院'}
+            {path: '/TDF/TDFIndex', component: './TDFIndex/index', title: '银川互联网医院'}
         ]
     },
 
