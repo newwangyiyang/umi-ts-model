@@ -1,5 +1,5 @@
 export default [ // 配置路由
-    { path: '/', component: './index/index' },
+    { path: '/index', component: './index/index' },
     // 权限配置 Routes  将权限存储在了localStorage
     // 由于app中的webView不支持window.localStorage (getItem/setItem) 所以使用store2对本地存储做了兼容处理
     // WebView白屏就是因为获取不到localStorage对象，报异常
@@ -43,8 +43,9 @@ export default [ // 配置路由
     },
     {   // 路由的嵌套 关键点 props.children
         path: '/nesting',
-        component: './nesting/index',
+        component: '../layouts/TabbarLayout/index',
         routes: [
+            { path: '/nesting', redirect: '/nesting/life'},
             { path: '/nesting/life', component: './nesting/nestingPages/life/index' },
             { path: '/nesting/koubei', component: './nesting/nestingPages/koubei/index' },
             { path: '/nesting/friend', component: './nesting/nestingPages/friend/index' },
@@ -73,6 +74,26 @@ export default [ // 配置路由
         },
         ],
     },
+
+
+    // H5 权限页面
+    {
+        path: '/',
+        component: '../layouts/BasicLayout/index',
+        Routes: ['src/pages/Authorized'],
+        authority: ['user', 'admin'],
+        routes: [
+            {path: '/TDFIndex', component: './TDFIndex/index', title: '银川互联网医院'}
+        ]
+    },
+
+    // Tabbar 页面
+
+
+
+
+
+
     { path: '/404', component: '404' },
 ]
 

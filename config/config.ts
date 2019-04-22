@@ -40,11 +40,14 @@ const config: IConfig =  {
     ['umi-plugin-react', {
       antd: true,
       dva: {
-        immer: true
+        immer: true,
+        hmr: true,
       },
       fastClick: true,
-      dynamicImport: { webpackChunkName: true },
-      title: '步长制药',
+      dynamicImport: { loadingComponent: './components/PageLoading/index', webpackChunkName: true },
+      title: {
+        defaultTitle: '步长制药',
+      },
       dll: false,
       
       routes: {
