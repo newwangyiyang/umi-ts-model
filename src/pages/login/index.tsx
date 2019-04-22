@@ -77,7 +77,6 @@ class Login extends React.Component<LoginPropsIF, LoginStateIF> {
                 </InputItem>
                 <VER>{(getFieldError('userphone') || []).join(',')}</VER>
                 <InputItem
-                    className={styles.my_input}
                     {...getFieldProps('usercode', {
                         // initialValue: 'little ant',
                         rules: [

@@ -24,34 +24,6 @@ export default [ // 配置路由
         component: './dvaDemo01/index'
     },
 
-    /*******************************框架页面封装 S**************************************** */
-    {   // 登录页面 （类组件）
-        path: '/login',
-        component: './login/index'
-    },
-    {   // 列表页面 （纯函数组件） 基于userState
-        path: '/list/:id',
-        component: './list/index'
-    },
-    {   // 列表页面 （纯函数组件） 基于model
-        path: '/listModel',
-        component: './listModel/index'
-    },
-    {   // 全局model数据交互
-        path: '/showGlobalModel',
-        component: './showGlobalModel/index'
-    },
-    {   // 路由的嵌套 关键点 props.children
-        path: '/nesting',
-        component: '../layouts/TabbarLayout/index',
-        routes: [
-            { path: '/nesting', redirect: '/nesting/life'},
-            { path: '/nesting/life', component: './nesting/nestingPages/life/index' },
-            { path: '/nesting/koubei', component: './nesting/nestingPages/koubei/index' },
-            { path: '/nesting/friend', component: './nesting/nestingPages/friend/index' },
-        ]
-    },
-    /*******************************框架页面封装 E**************************************** */
     {
         path: '/funcComponent',
         component: './funcComponent/index'
@@ -75,10 +47,46 @@ export default [ // 配置路由
         ],
     },
 
+    // 普通页面 CommonLayout
+    {  
+        path: '/common',
+        component: '../layouts/CommonLayout/index',
+        routes: [
+            {   // 登录页面 （类组件）
+                path: '/common/login', 
+                component: './login/index' 
+            }, 
+            {   // 列表页面 （纯函数组件） 基于userState
+                path: '/list/:id',
+                component: './list/index'
+            },
+            {   // 列表页面 （纯函数组件） 基于model
+                path: '/listModel',
+                component: './listModel/index'
+            },
+            {   // 全局model数据交互
+                path: '/showGlobalModel',
+                component: './showGlobalModel/index'
+            },
+        ]
+    },
 
-    // H5 权限页面
+
+    // Tabbar 页面 TabbarLayout
+    {   // 路由的嵌套 关键点 props.children
+        path: '/nesting',
+        component: '../layouts/TabbarLayout/index',
+        routes: [
+            { path: '/nesting', redirect: '/nesting/life'},
+            { path: '/nesting/life', component: './nesting/nestingPages/life/index' },
+            { path: '/nesting/koubei', component: './nesting/nestingPages/koubei/index' },
+            { path: '/nesting/friend', component: './nesting/nestingPages/friend/index' },
+        ]
+    },
+
+    // H5 权限页面 BasicLayout
     {
-        path: '/',
+        path: '/TDF',
         component: '../layouts/BasicLayout/index',
         Routes: ['src/pages/Authorized'],
         authority: ['user', 'admin'],
@@ -87,7 +95,6 @@ export default [ // 配置路由
         ]
     },
 
-    // Tabbar 页面
 
 
 
