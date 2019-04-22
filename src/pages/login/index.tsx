@@ -1,6 +1,8 @@
 import React from 'react'
 import router from 'umi/router'
 
+import cn from 'classnames'
+
 import { LoginStateIF } from '@/interfaces/stateIF';
 import { LoginPropsIF } from '@/interfaces/propsIF';
 
@@ -148,6 +150,7 @@ class Login extends React.Component<LoginPropsIF, LoginStateIF> {
                     type="ghost"
                 >路由嵌套展示</Button>
                 </WingBlank>
+                <p className={cn(styles.my_p, {[styles['ell_two']]: true})}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam amet quibusdam vel quaerat ipsa, ducimus tempora, quo eius iusto repellat suscipit modi id laboriosam et aut maiores dolores placeat in?</p>
             </div>
         )
     }

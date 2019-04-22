@@ -1,3 +1,4 @@
+@import '../../assets/less/mixins.less';
 .login_wrap {
     height: 100vh;
     background-color: #fff;
@@ -12,4 +13,13 @@
 // 对input extra的最大高度进行扩展
 .login_wrap :global(.am-list-item .am-input-extra) {
     max-height: 70%;
+}
+
+.my_p {
+    font-size: 16px;
+    color: #666;
+    &.ell_two {
+        color: red;
+        .ellipsis-mult(2);
+    }
 }
