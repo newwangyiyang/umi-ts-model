@@ -14,7 +14,7 @@ export default [ // 配置路由
             {path: '/father/index02', component: './father/sons/index02'}
         ] 
     },
-    // 全局model跟局部model测试
+    // // 全局model跟局部model测试
     { 
         path: '/dvaDemo',
         component: './dvaDemo/index'
@@ -92,6 +92,31 @@ export default [ // 配置路由
         authority: ['user', 'admin'],
         routes: [
             {path: '/TDF/TDFIndex', component: './TDFIndex/index', title: '银川互联网医院'}
+        ]
+    },
+    // 事业十二部父亲节活动，路由信息
+    {
+        path: '/',
+        component: '../layouts/BasicLayout/index',
+        Routes: ['src/pages/Authorized'],
+        routes: [
+            {
+                path: '/', 
+                component: './FatherH5Auth/index', 
+                title: '微信登录'
+            },
+            {
+                path: '/FatherH5Login', 
+                component: './FatherH5Login/index', 
+                authority: ['user'],
+                title: '填写个人信息'
+            },
+            {
+                path: '/FatherH5Pay', 
+                component: './FatherH5Pay/index', 
+                authority: ['user'],
+                title: '提交成功'
+            },
         ]
     },
 

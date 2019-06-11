@@ -5,7 +5,7 @@ import s from 'store2'
 
 
 // use localStorage to store the authority info, which might be sent from server in actual project.
-export function getAuthority(str) {
+export function getAuthority(str?: string | undefined) {
   // return localStorage.getItem('antd-mobile-authority') || ['admin', 'user'];
   const authorityString =
     typeof str === 'undefined' ? s('antd-mobile-authority') : str;
@@ -19,10 +19,10 @@ export function getAuthority(str) {
   if (typeof authority === 'string') {
     return [authority];
   }
-  return authority || ['admin'];
+  return authority;
 }
 
-export function setAuthority(authority) {
+export function setAuthority(authority: string | string[]) {
   const Authority = typeof authority === 'string' ? [authority] : authority;
   return s('antd-mobile-authority', JSON.stringify(Authority));
 }

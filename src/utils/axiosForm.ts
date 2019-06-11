@@ -5,7 +5,7 @@ import { AxiosResponse, AxiosRequestConfig } from 'axios'
 
 //已form表单进行提交
 const axiosForm = axios.create({
-  baseURL: 'http://www.todaifu.com:3435/',
+  baseURL: 'http://192.168.5.77:8080/',
   timeout: 20000,
   headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'}
 });

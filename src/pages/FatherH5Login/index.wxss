@@ -1,0 +1,92 @@
+/**
+* 作品：mixin.less
+*/
+/*-------------------------------------
+├   布局                              ┆
+└------------------------------------*/
+/*-------------------------------------
+├   字体                              ┆
+└------------------------------------*/
+/*-------------------------------------
+├   图像                              ┆
+└------------------------------------*/
+/*-------------------------------------
+├   动效                              ┆
+└------------------------------------*/
+/*-------------------------------------
+├   功能                              ┆
+└------------------------------------*/
+/*-------------------------------------
+├   图形                              ┆
+└------------------------------------*/
+/*-------------------------------------
+├   组件                              ┆
+└------------------------------------*/
+.loading:after {
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: bottom;
+  animation: ellipsis 2s infinite;
+  content: "\2026";
+  /* ascii code for the ellipsis character */
+}
+@keyframes ellipsis {
+  from {
+    width: 2px;
+  }
+  to {
+    width: 15px;
+  }
+}
+img.flip {
+  transform: scaleX(-1);
+  filter: FlipH;
+}
+/* 图片的预加载 */
+.login_wrap {
+  min-height: 100vh;
+  position: relative;
+}
+.login_wrap :global(.am-list-item .am-input-control input) {
+  font-size: 14px;
+  color: #333;
+  vertical-align: middle;
+  padding: 0;
+}
+.login_wrap .file_choose_wrap {
+  height: 50px;
+  width: 50px;
+  overflow: hidden;
+}
+.login_wrap :global(.am-list-item .am-input-extra) {
+  max-height: 70%;
+}
+.login_wrap .login_bg {
+  display: block;
+  width: 100%;
+}
+.login_wrap .login_active {
+  position: absolute;
+  z-index: 1001;
+  left: 50%;
+  width: 80vw;
+  transform: translateX(-50%);
+  bottom: 250px;
+}
+.login_wrap :global(.am-list) {
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+.login_wrap .code_btn {
+  background-color: #D55A1C;
+}
+.login_wrap :global(.am-button-primary:before) {
+  border: none;
+}
+.login_wrap .sub_btn {
+  width: 174px;
+  height: 51px;
+  display: block;
+  margin: 0 auto;
+}

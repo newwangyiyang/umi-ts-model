@@ -12,8 +12,10 @@ declare namespace Ajax {
     // 请求接口数据
     export interface AjaxResponse {
       code?: number,
-      data: any,
-      msg: string,
+      data?: any,
+      object?: any,
+      obj?: any,
+      message: string,
       statusCode?: number
     }
 }

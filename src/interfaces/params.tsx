@@ -21,6 +21,7 @@ export interface RcFormPropsIF {
     getFieldValue: Function
     getFieldError: Function
     validateFields: Function
+    getFieldDecorator: Function
 }
 /**
  * 定义antd-mobile图片上传的文件类型

@@ -6,9 +6,9 @@ const path = require('path');
 const config: IConfig =  {
   // 基本配置
   history: 'hash', // 已hash作为路由跳转的方式
-  outputPath: '/YingChuanNXTZ', // 打包的输出路径
-  base: '/YingChuanNXTZ/', //指定 react-router 的 base，部署到非根目录时需要配置
-  publicPath: '/YingChuanNXTZ/', // 指定 webpack 的 publicPath，指向静态资源文件所在的路径
+  outputPath: '/FatherH5For12', // 打包的输出路径
+  base: '/FatherH5For12/', //指定 react-router 的 base，部署到非根目录时需要配置
+  publicPath: '/FatherH5For12/', // 指定 webpack 的 publicPath，指向静态资源文件所在的路径
   hash: true, // 是否开启 hash 文件后缀
   targets: { // 配置浏览器最低版本，会自动引入 polyfill 和做语法转换，配置的 targets 会和合并到默认值，所以不需要重复配置
     android: 5,
@@ -46,10 +46,9 @@ const config: IConfig =  {
       fastClick: true,
       dynamicImport: { loadingComponent: './components/PageLoading/index', webpackChunkName: true },
       title: {
-        defaultTitle: '步长制药',
+        defaultTitle: '微信登录',
       },
       dll: false,
-      
       routes: {
         exclude: [
           /models\//,

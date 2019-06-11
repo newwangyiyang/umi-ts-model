@@ -1,0 +1,51 @@
+@import '../../assets/less/mixins';
+
+
+.login_wrap {
+    min-height: 100vh;
+    position: relative;
+    :global(.am-list-item .am-input-control input) {
+        font-size: @font-size-base;
+        color: @color-text-paragraph;
+        vertical-align: middle;
+        padding: 0;
+    }
+    .file_choose_wrap {
+        height: 50px;
+        width: 50px;
+        overflow: hidden;
+    }
+    :global(.am-list-item .am-input-extra) {
+        max-height: 70%;
+    }
+    .login_bg {
+        display: block;
+        width: 100%;
+    }
+    .login_active {
+        position: absolute;
+        z-index: 1001;
+        left: 50%;
+        width: 80vw;
+        transform: translateX(-50%);
+        bottom: 250px;
+    }
+    // 重新列表的基本样式
+    :global(.am-list) {
+        border-radius: 6px;
+        overflow: hidden;
+        margin-bottom: 10px;
+    }
+    .code_btn {
+        background-color: #D55A1C;
+    }
+    :global(.am-button-primary:before) {
+        border: none;
+    }
+    .sub_btn {
+        width: 174px;
+        height: 51px;
+        display: block;
+        margin: 0 auto;
+    }
+}
