@@ -1,0 +1,61 @@
+/**
+* 作品：mixin.less
+*/
+/*-------------------------------------
+├   布局                              ┆
+└------------------------------------*/
+/*-------------------------------------
+├   字体                              ┆
+└------------------------------------*/
+/*-------------------------------------
+├   图像                              ┆
+└------------------------------------*/
+/*-------------------------------------
+├   动效                              ┆
+└------------------------------------*/
+/*-------------------------------------
+├   功能                              ┆
+└------------------------------------*/
+/*-------------------------------------
+├   图形                              ┆
+└------------------------------------*/
+/*-------------------------------------
+├   组件                              ┆
+└------------------------------------*/
+.loading:after {
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: bottom;
+  animation: ellipsis 2s infinite;
+  content: "\2026";
+  /* ascii code for the ellipsis character */
+}
+@keyframes ellipsis {
+  from {
+    width: 2px;
+  }
+  to {
+    width: 15px;
+  }
+}
+img.flip {
+  transform: scaleX(-1);
+  filter: FlipH;
+}
+/* 图片的预加载 */
+.ar_wrap :global(.am-list-item .am-input-control input) {
+  font-size: 14px;
+  color: #333;
+  vertical-align: middle;
+  padding: 0;
+}
+.ar_wrap .input_msg {
+  font-size: 12px;
+  color: #888;
+  padding-left: 25px;
+}
+.ar_wrap .tips_msg {
+  font-size: 13px;
+  line-height: 18px;
+  color: #666;
+}

@@ -3,7 +3,7 @@ import { AxiosResponse, AxiosRequestConfig } from 'axios'
 
 //以application/json进行提交
 const axiosJson = axios.create({
-    baseURL: 'https://www.buchang.com/',
+    baseURL: 'http://localhost:8082/',
     timeout: 30000,
     headers: {'Content-Type': 'application/json;charset=UTF-8'}
 });
